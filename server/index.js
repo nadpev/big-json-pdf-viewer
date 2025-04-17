@@ -3,7 +3,7 @@ import cors from "cors";
 import fs from "fs";
 import {globSync} from "glob";
 import path from "path";
-
+import { fileURLToPath } from "url"
 const app = express();
 app.use(cors());
 app.use(express.json({limit: "200mb"}));   // accept 20k‑row JSON
@@ -18,7 +18,7 @@ app.post("/api/upload", (req, res) => {
 app.get("/api/records", (req, res) => {
   const {start = 0, limit = 100} = req.query;
   if (!app.locals.records) {                       // first call → build cache
-    const files = globSync("server/data/**/*.json");
+    const files = globSync(path.join(__dirname, "data", "**/*.json"));
     const pick = o => ({
       Email_Id: o.Email?.Id,
       Email_Subject: o.Email?.Subject,
@@ -58,7 +58,7 @@ app.get("/api/records", (req, res) => {
 });
 
 // ---------- static pdf delivery ----------
-app.use("/pdf", express.static(path.resolve("server/pdf")));
-
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use("/pdf", express.static(path.join(__dirname, "pdf")));
 const PORT = process.env.PORT ?? 5174;
 app.listen(PORT, () => console.log("API running http://localhost:"+PORT));

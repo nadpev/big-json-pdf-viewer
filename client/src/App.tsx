@@ -12,8 +12,8 @@ export default function App() {
       </nav>
 
       <Routes>
-        <Route path="/" element={<JsonViewer />} />
-        <Route path="/records" element={<RecordsTable />} />
+        <Route path="/records" element={<JsonViewer />} />
+        <Route path="/" element={<RecordsTable />} />
         <Route path="/pdf/:id" element={<PdfViewer />} />
       </Routes>
     </>

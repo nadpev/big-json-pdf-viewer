@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { ColDef } from "ag-grid-community";
+import { flatten } from "../utils/flatten";
 import { BigRow } from "../types/BigRow";
+
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
@@ -14,7 +16,7 @@ export default function JsonViewer() {
     if (!file) return;
 
     const json = JSON.parse(await file.text());
-    const data: BigRow[] = Array.isArray(json) ? json : [json];
+    const data = (Array.isArray(json) ? json : [json]).map(obj => flatten(obj));
     setRows(data);
 
     /** build column defs once we have the shape */
