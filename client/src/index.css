@@ -2,7 +2,7 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
-
+  width: 100%;
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
@@ -12,7 +12,11 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+.diff-cell        { background:#ffdddd !important; }  
+.ag-row-focus    { background:#e6f4ff  !important; } 
+#root{
+  width: 100%;
+}
 a {
   font-weight: 500;
   color: #646cff;
@@ -28,6 +32,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  width: 100%;
 }
 
 h1 {
@@ -65,4 +70,8 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+.ag-ltr .ag-cell-focus:not(.ag-cell-range-selected):focus-within, .ag-ltr .ag-context-menu-open .ag-cell-focus:not(.ag-cell-range-selected), .ag-ltr .ag-full-width-row.ag-row-focus:focus .ag-cell-wrapper.ag-row-group, .ag-ltr .ag-cell-range-single-cell, .ag-ltr .ag-cell-range-single-cell.ag-cell-range-handle, .ag-rtl .ag-cell-focus:not(.ag-cell-range-selected):focus-within, .ag-rtl .ag-context-menu-open .ag-cell-focus:not(.ag-cell-range-selected), .ag-rtl .ag-full-width-row.ag-row-focus:focus .ag-cell-wrapper.ag-row-group, .ag-rtl .ag-cell-range-single-cell, .ag-rtl .ag-cell-range-single-cell.ag-cell-range-handle{
+  border: none !important;
+  background-color: #99c3e4;
 }
